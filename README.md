@@ -1,3 +1,12 @@
+---
+title: AI Fall Detection System
+emoji: 🛟
+colorFrom: blue
+colorTo: green
+sdk: gradio
+app_file: web_app.py
+---
+
 # AI Fall Detection System
 
 A Python computer-vision prototype that uses webcam video, MediaPipe pose landmarks, OpenCV and temporal rules to estimate body states and flag possible falls.
@@ -12,6 +21,7 @@ A Python computer-vision prototype that uses webcam video, MediaPipe pose landma
 - Left/right wrist movement detection, with direction arrows and dashboard status
 - Full visible-pose bounding box with preview pixel coordinates for the body center and key joints
 - Command-line options for camera selection, resolution, feature listing, and audio disable
+- Browser demo: analyze a short video recorded with your webcam or uploaded as a file
 
 ## Requirements
 
@@ -51,6 +61,10 @@ python main.py --disable-audio
 
 The app includes a Tkinter dashboard with Start, Stop and Quit controls, a live status log, posture telemetry, left/right hand-motion status, body bounding-box coordinates, and visible key-joint positions. The video feed annotates the body center and visible joint coordinates. Coordinates are pixels in the mirrored preview. Run `python main.py` normally to open the dashboard and webcam detection window.
 
+## Browser demo deployment
+
+The Hugging Face Space runs `web_app.py` and accepts a short webcam recording or uploaded video (up to 1,800 frames). It returns an annotated video and posture/body-position summary; it does not continuously monitor the webcam. To publish it, create a **public Gradio Space** on Hugging Face, then push this project to that Space's Git repository. The Space provides a persistent `https://<username>-<space-name>.hf.space` URL. The desktop dashboard remains available separately with `python main.py`.
+
 ## Project structure
 
 ```text
@@ -58,10 +72,13 @@ AI_Fall_Detection_System/
 ├── .gitignore
 ├── LICENSE
 ├── main.py
+├── web_app.py
 ├── config.py
 ├── pose_estimator.py
 ├── fall_detector.py
+├── hand_motion.py
 ├── requirements.txt
+├── packages.txt
 ├── README.md
 └── utils/
     ├── __init__.py

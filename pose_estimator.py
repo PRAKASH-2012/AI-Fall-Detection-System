@@ -22,12 +22,12 @@ class PoseEstimator:
         "right_ankle",
     )
 
-    def __init__(self):
+    def __init__(self, model_complexity=2, static_image_mode=False):
         self.mp_pose = mp.solutions.pose
         self.mp_draw = mp.solutions.drawing_utils
         self.pose = self.mp_pose.Pose(
-            static_image_mode=False,
-            model_complexity=2,
+            static_image_mode=static_image_mode,
+            model_complexity=model_complexity,
             smooth_landmarks=True,
             min_detection_confidence=0.45,
             min_tracking_confidence=0.45,
