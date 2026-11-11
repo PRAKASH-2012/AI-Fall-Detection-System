@@ -55,6 +55,8 @@ The app includes a Tkinter dashboard with Start, Stop and Quit controls, a live 
 
 ```text
 AI_Fall_Detection_System/
+├── .gitignore
+├── LICENSE
 ├── main.py
 ├── config.py
 ├── pose_estimator.py
